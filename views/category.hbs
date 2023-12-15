@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .table1{
+       width: 301px;
+    box-shadow: 1px -1px 20px 1px black;
+    margin-top: -22px;
+    height: 379px;
+    margin-left: -7px;
+    height: 600px;
+}
+
+        .logo{
+               width: 301px;
+    height: 132px;
+    background: black;}
+        
+        h1{
+              top: 10px;
+    left: 69px;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    font-family: fangsong;
+    font-size: 41px;
+    position: absolute;
+
+        }
+        .list{
+            margin-top: 48px;
+    width: 200px;
+
+        }
+        .list ul{
+            list-style: none;
+        }
+         .list ul li{
+                color: black;
+    padding-top: 24px;
+    font-size: 26px;
+    font-family: cursive;
+        }
+        .string{
+                display: flex;
+    flex-wrap: wrap;
+        }
+        h2{
+                font-size: 51px;
+    font-family: cursive;
+    font-weight: bold;
+    margin-left: 59px;
+    margin-top: 15px;
+        }
+        .line1{
+               
+                    display: flex;
+    flex-wrap: wrap;
+        }.add{
+               
+    padding-top: 4%;
+
+        }
+        .add button{
+         width: 168%;
+    height: 72%;
+    background: local;
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    font-family: cursive;
+    border-radius: 14px;
+    border-width: 3px;
+        }
+        .CreateCategory{
+            display: none;
+                 transition: 0.5s;
+    width: 398px;
+    height: 285px;
+    box-shadow: 0px -2px 14px 19px #1b1d18e6;
+    border-radius: 43px;
+
+
+
+        }
+        
+        .name input{
+                width: 253px;
+    height: 53px;
+    border-width: 4px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: cursive;
+    color: black;
+    font-weight: bold;
+        }
+        .name{
+                padding-top: 60px;
+    padding-bottom: 16px;
+        }
+        .CreateCategory button{
+              margin-top: 57px;
+    width: 234px;
+    height: 47px;
+    font-size: 24px;
+    background-color: #3e3e3e;
+    border-radius: 26px;
+    color: white;
+        }
+        .getElem div{
+           border: 2px solid;
+    width: 195px;
+    font-size: 28px;
+    padding: 20px;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    border-radius: 17px;
+    margin: 1px;
+        }
+
+        @media (max-width: 600px){
+            .table2{
+                margin-left: -46px;
+            }
+            .add {
+    margin-left: -61%;
+    margin-top: 89px;
+    height: 75px;}
+    .table1{
+            width: 100%;
+    box-shadow: 1px -1px 20px 1px black;
+    margin-top: -22px;
+    height: 379px;
+    margin-left: -7px;
+    height: 600px;
+    }
+    .logo{
+            width: 100%;
+    height: 132px;
+    background: black;
+    }
+        }
+
+        @media (max-width: 800px){
+            .table1{
+                    width: 100%;
+            }
+            .add{
+                padding-top: 3%;
+    margin-left: 26px;
+            }
+            .add button{
+                    width: 81%;
+    height: 72%;
+    background: local;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    font-family: cursive;
+    border-radius: 14px;
+    border-width: 3px;
+            }
+            .logo{
+                    width: 100%;
+    height: 132px;
+    background: black;
+            }
+        }
+        
+    </style>
+    <div class="container">
+        <div class="string">
+            <div class="table1">
+                <div class="logo">
+                                    <h1>Newborn</h1>
+
+                </div>
+
+                <div class="list">
+                    <ul>
+                        <li>Обзор</li>
+                        <li>Аналитика</li>
+                        <li><a href="/history">История</a></li>
+                        <li ><a href="/order">Добавить заказ</a></li>
+                        <li class="assortiment">Ассортимент</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="table2">
+<div class="line1">
+ 
+        <div class="head">
+            <h2>Категории</h2>
+        </div>
+        <div class="add">
+            <button>Добавить категорию</button>
+        </div>
+  
+</div>
+<div class="line2">
+   <center>
+     <div class="CreateCategory">
+        <div class="name">
+            <input type="text" min="5" placeholder="название новой категории">
+
+        </div>
+       
+        <button class="save">Сохранить</button>
+
+    </div>
+   </center>
+
+
+
+
+
+  <center>
+     <div class="getElem">
+
+   </div>
+  </center>
+</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let elems = document.querySelector('.getElem')
+       async function getCategory(){
+        const response = await fetch('/api/category', {
+            method: "GET",
+             headers: { "Accept": "application/json" }
+        })
+            if (response.ok === true) {
+                // получаем данные
+                const products = await response.json();
+                console.log(products)
+               const insideproducts = products.categories
+             
+                products.forEach(e=>{
+                    let div = document.createElement('div')
+                    
+                   
+                    div.append(e.name)
+                     div.id = e._id
+                    elems.append(div)
+
+
+                    let link = document.querySelectorAll('.getElem div')
+                  link.forEach(e=>{
+                    e.addEventListener('click', (e)=>{
+                        const idBlock = e.target.id
+                        console.log(e.target.id)
+                        window.location.href = `/api/position/get/${idBlock}`
+                    })
+                  })
+                    
+                })
+              }
+           //  console.log(products)
+              
+                
+            }
+       
+       getCategory()
+
+
+let CreateCategory = document.querySelector('.CreateCategory')
+       let addCategory = document.querySelector('.add button')
+       let b = 1
+      addCategory.addEventListener('click', ()=>{
+        
+        b+=1
+        console.log(b)
+        if(b%2){
+             CreateCategory.style.display = 'block'
+        }else{
+            CreateCategory.style.display = 'none'
+        }
+       
+         
+      })
+        let save = document.querySelector('.save')
+        save.addEventListener('click', function(){
+
+            let name  = document.querySelector('.name input').value
+            sendData(name)
+
+        })
+        async function sendData(name){
+            const response = await fetch('api/category', {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                 body: JSON.stringify({
+                    name: name,
+                    
+                })
+                
+            })
+            if(response.ok ===true ){
+                 const newCategory = await response.json();
+                 window.location.reload()
+                 CreateCategory.style.display = 'none'
+            }else{
+              alert("такая категория уже существует")
+            }
+        }
+    </script>
+</body>
+</html>

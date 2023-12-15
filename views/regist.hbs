@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<style>
+     .string1{
+            display: flex;
+    justify-content: space-between;
+    background-color: currentcolor;
+
+        }
+        h1{
+            color: white;
+    font-size: 47px;
+    padding-left: 58px;
+    font-family: cursive;
+        }
+        .login-regist{
+            display: none;
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+    margin-top: 20px;
+    margin-right: 14px;
+    margin-top: 39px;
+        }
+        .login{
+            width: 95px;
+            border-style: solid;
+            border-color: white;
+            height: 50px;
+            border-right-width: 1px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            position: relative;
+        }
+        .regist{
+            width: 95px;
+    border-style: solid;
+    border-color: white;
+    height: 50px;
+    border-left-width: 1px;
+    padding-right: 4px;
+    border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: relative;
+        }
+        .login p{
+          color: white;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    /* padding: 10px; */
+    top: 0px;
+    left: 32px;
+
+        }
+        .regist p{
+            color: white;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    /* padding: 10px; */
+    top: 0px;
+    left: 2px
+        }
+
+
+         .form2{
+
+        margin-top: 63px;
+   }
+
+
+    .email2{
+            margin-top: 35px;
+    margin-bottom: 34px;
+    position: relative;
+        }
+            .email2 input{
+                  border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+    outline: none;
+
+        }
+
+
+            .name{
+            margin-top: 35px;
+    margin-bottom: 34px;
+    position: relative;
+        }
+            .name input{
+                  border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+    outline: none;
+
+        }
+
+
+            .age{
+            margin-top: 35px;
+    margin-bottom: 34px;
+    position: relative;
+        }
+            .age input{
+                  border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+    outline: none;
+
+        }
+
+
+
+
+         .password2{
+              margin-top: 35px;
+    margin-bottom: 34px;
+    position: relative;
+        }
+        .password2 input{
+                        border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+    outline: none;
+        }
+        .submit2{
+            width: 159px;
+    height: 37px;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    background-color: black;
+        }
+
+h3{
+        text-shadow: -3px 0px 4px black;
+}
+
+
+          h2{
+            font-size: 39px;
+    font-weight: bold;
+    font-family: cursive;
+        }
+</style>
+
+    <div class="container">
+        <div class="string1">
+            <div class="logo">
+                <h1>Newborn</h1>
+            </div>
+            <div class="login-regist">
+              <a href="/" class="login">
+           <p>вход</p>
+              </a>
+                    
+                
+                <div class="regist">
+                    <p>Регистрайия</p>
+                </div>
+            </div>
+        </div>
+
+  <center>
+         <div class="string3">
+           <form class="form2">
+                <h2>Регистрация</h2>
+                <div class="name">
+                    <input placeholder="имя"  className="text-area-minimal" id="name" type="text" min="3" max="20">
+                </div>
+                 <div class="age">
+                    <input placeholder="возраст"  className="text-area-minimal" id="age" type="number" min="2" max="2">
+                </div>
+                <div class="email2">                <input id="email2"  className="text-area-minimal" type="email" placeholder="email">
+</div>
+                <div class="password2">
+                     <input id="password2"  className="text-area-minimal"  type="passowrd" placeholder="password" min="2" max="8">
+                </div>
+                 <input class="submit2" type="submit">
+            </form>
+        </div>
+       </center>
+<h3 class="h3"></h3>
+</div>
+<script>
+        let h3 = document.querySelector('.h3')
+
+    let submit = document.querySelector('.submit2')
+       submit.addEventListener('click', (e)=>{
+        e.preventDefault()
+            let name = document.getElementById('name').value
+            let age = document.getElementById('age').value
+
+            let email = document.getElementById('email2').value
+            let password = document.getElementById('password2').value
+            sendData(name, age, email, password)
+       })
+
+
+       async function sendData(name, age,email, passowrd){
+    console.log(email, passowrd)
+  let request = await fetch('api/auth/regist', {
+            method: 'POST',
+            headers: { "Accept": "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify({
+                "name": name,
+                "age": age,
+                "email": email,
+                "password": passowrd
+            })
+
+        })
+
+         if (request.ok === true) {
+                const user = await request.json();
+                console.log('wefjewfew')
+                window.location.href = '/category'
+               
+            }else{
+                   h3.innerHTML = "Такой аккаунт существует"
+             h3.style.color = "red"
+             h3.style.fontSize = 33+'px'
+            }
+        
+       }
+</script>
+</body>
+</html>

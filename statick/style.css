@@ -1,0 +1,212 @@
+
+.but {
+    display: flex;
+    justify-content: space-around;
+}
+        .string1{
+                
+    height: 30px;
+    display: flex;
+        }
+      
+        .block1{
+             width: 300px;
+    height: 44px;
+    border: 3px solid darkseagreen;
+        }
+        .block1 span{
+  font-size: 34px;
+    font-weight: bold;
+    color: #8ec9dc;
+    text-shadow: 1px 0px 4px black;
+    margin-left: 13px;
+    padding-top: 16px;
+        }
+        .block2{
+             width: 300px;
+    height: 44px;
+    border: 3px solid darkseagreen;
+    margin-left: -3px;
+}
+          .block2 span{
+   font-size: 34px;
+    font-weight: bold;
+    color: #8ec9dc;
+    text-shadow: 1px 0px 4px black;
+    margin-left: 13px;
+    padding-top: 16px;
+        }
+         .block3 ul li {
+    list-style: none;
+    font-size: 23px;
+    font-family: cursive;
+    text-shadow: 0px 1px 6px black;
+    border-bottom: 2px solid;
+    margin-left: -40px;
+    box-shadow: 1px 2px 8px #9696f7;
+    border-left: 3px solid darkseagreen;
+    border-right: 3px solid darkseagreen;
+    width: 300px;
+}
+
+.block3{
+      
+    width: 303px;
+    height: 135px;
+   margin-top: -29px;
+
+
+}
+.block4{
+    margin-top: -29px;
+}
+.block4 ul li{
+ list-style: none;
+    font-size: 23px;
+    font-family: cursive;
+    text-shadow: 0px 1px 6px black;
+    border-bottom: 2px solid;
+    margin-left: -40px;
+    box-shadow: 1px 2px 8px #9696f7;
+   
+    border-right: 3px solid darkseagreen;
+    width: 303px;
+}
+.string2{
+        margin-top: 33px;
+        display: flex;
+}
+  
+      .block6 span{
+        font-size: 34px;
+    font-weight: bold;
+    color: #8ec9dc;
+    text-shadow: 1px 0px 4px black;
+    margin-left: 13px;
+    padding-top: 16px;
+     }
+     .block5{
+    margin-top: -13px;
+        margin-left: -487px;
+
+     }
+     .block5 li{
+    list-style: none;
+    font-size: 28px;
+    font-family: cursive;
+    text-shadow: 0px 1px 6px black;
+    border-bottom: 2px solid;
+    margin-left: -40px;
+    box-shadow: 1px 2px 8px #9696f7;
+    border-left: 3px solid darkseagreen;
+    border-right: 3px solid darkseagreen;
+    width: 300px;
+     } 
+
+
+   .block6{
+          width: 300px;
+    height: 44px;
+    border: 3px solid darkseagreen;
+    margin-left: -3px;
+
+     }
+
+     .block6 span{
+         font-size: 34px;
+    font-weight: bold;
+    color: #8ec9dc;
+    text-shadow: 1px 0px 4px black;
+    margin-left: 13px;
+    padding-top: 16px;
+     }
+     .string2 ul{
+         
+    list-style: none;
+    
+    width: 790px;
+
+     }
+     .string2 ul li{
+            font-size: 28px;
+    font-family: cursive;
+    color: aqua;
+    text-shadow: -1px -1px 7px black;
+     }
+     .string2{
+        margin-top: 31px;
+     }
+     #name{
+        margin-right: 187px;
+     }
+     #cost{
+        margin-right: 200px;
+     }
+     .container2{
+        display: grid;
+        justify-content: center;
+        margin-top: -175px;
+        background: black;
+        width: 100%;
+        opacity: 0.6;
+
+     }
+     .inside{
+        display: none;
+            width: 400px;
+    border: 2.3px solid;
+    border-radius: 29px;
+    box-shadow: 1px -1px 14px 5px #9b8181;
+    margin-top: 10000000px
+
+     }
+     .open{
+        display: block;
+        width: 400px;
+        border: 2.3px solid;
+        border-radius: 29px;
+        box-shadow: 1px -1px 14px 5px #9b8181;
+        margin-top: 0px;
+        transform: scale(1);
+        transition: transform .8s;
+        background-color: white;
+
+     }
+     .open ul li{
+        font-size: 22px;
+        list-style: none;
+        font-family: cursive;
+        display: flex;
+     }
+     .open ul li li{
+        padding-left: 7px;
+     }
+     .otmena {
+        width: 110px;
+        height: 30px;
+        font-size: 15px;
+        font-family: cursive;
+        background: red;
+        color: white;
+        border-radius: 9px;
+     }
+     .confirm{
+        width: 110px;
+        height: 30px;
+        font-size: 15px;
+        font-family: cursive;
+        background: black;
+        color: white;
+        border-radius: 9px;
+     }
+     .wraps{
+        padding-bottom: 13px;
+     }
+     .under-inside ul{
+        display: grid;
+    justify-content: center;
+    margin-right: 51px;
+     }
+     .under-inside{
+        text-align: center;
+     }

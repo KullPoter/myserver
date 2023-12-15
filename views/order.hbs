@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+h1{
+        font-size: 70px;
+    text-shadow: 0px -1px 4px black;
+    color: gainsboro;
+
+}
+.groupCategories ul li{
+     list-style: none;
+    border: 3px solid #000000a8;
+    font-size: 35px;
+    color: rgb(179, 179, 179);
+    width: 300px;
+    padding: 24px;
+    margin: 1px;
+    background-color: #2a2a2a;
+}
+.wrap{
+        display: flex;
+    justify-content: space-around;
+}
+.wrap a{
+    margin-top: 70px;
+    font-size: 27px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+    </style>
+   <div class="wrap">
+     <h1>Заказ</h1>
+     <a href="/category">назад</a>
+   </div>
+   <center>
+     <div class="groupCategories">
+        <ul>
+
+        </ul>
+    </div>
+   </center>
+    <script>
+        async function getCategory(){
+            const response = await fetch('/api/category',{
+                method: 'GET',
+                   headers: { "Accept": "application/json" }
+            })
+            if(response.ok === true){
+                const group =  document.querySelector('.groupCategories ul')
+                const jsonFormat = await response.json()
+            
+               
+               
+               jsonFormat.forEach(e=>{
+                console.log(e.name)
+               let li = document.createElement('li')
+              let classNames= li.className = "category"
+                li.append(e.name)
+                li.id = e._id
+                group.append(li)
+                let category = document.querySelectorAll('.category')
+    
+  category.forEach(e=>{
+ e.addEventListener('click', ()=>{
+console.log(e.id)
+window.location.href = `/api/order/${e.id}`
+ })
+  })
+             
+               })
+            }
+        }
+    
+      
+        getCategory()
+    </script>
+</body>
+</html>

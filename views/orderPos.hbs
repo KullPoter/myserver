@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="body">
+    
+
+
+
+
+
+
+    <div class="container">
+        <div class="string1">
+            <div class="block1">
+                <span>Name</span>
+            </div>
+
+            <div class="block2">
+                <span>Cost</span>
+            </div>
+            <div class="block6">
+                <span>add</span>
+            </div>
+        </div>
+        <div class="string2">
+       {{!-- {{#each position}}
+       <ul>
+<li id="name">{{this.name}}</li>
+            <li id="cost">{{this.cost}}</li>
+            <li>add</li>
+           
+       </ul>
+
+       {{/each}} --}}
+ 
+           <div class="block3">
+            <ul>
+{{#each position}}
+<li>{{this.name}}</li>
+
+{{/each}}
+            </ul>
+
+           </div>
+
+           <div class="block4">
+            <ul>
+                {{#each position}}
+            <li>{{this.cost}}</li>
+
+                {{/each}}
+            </ul>
+           </div>
+
+
+           <div class="block5">
+            {{#each position}}
+            <li id="{{this.name}}" class="{{this.cost}}">add</li>
+
+                {{/each}}
+           </div>
+        </div>
+
+
+        <button id="besend">Отправить</button>
+    </div>
+
+
+
+    <div class="container2">
+        <div class="inside">
+
+    <div class="under-inside">
+ <ul>
+
+        </ul>
+
+
+
+          <div class="wraps">
+            <button class="otmena">отмена</button>
+            <button class="confirm">подвердить</button>
+        </div>
+    </div>     
+
+
+
+
+      
+        </div>
+    </div>
+
+
+  <select name="" id=""></select>
+<script src="/main.js"></script>
+</body>
+</html>

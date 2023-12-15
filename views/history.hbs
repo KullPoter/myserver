@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        h1{
+            color: white;
+    padding: 46px;
+    font-size: 40px;
+        }
+        .string1{
+                background: currentColor;
+                display: flex;
+    justify-content: space-around;
+        }
+        .string1 a{
+     margin-top: 81px;
+    font-size: 27px;
+    text-decoration: none;
+    color: white;
+    margin-right: 25px;
+        }
+        .string2{
+                          background: #3f3f3f;
+    margin-top: -27px;
+
+        }
+        .filter{
+                        padding: 40px;
+
+}
+.number{
+    width: 156px;
+    height: 33px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+  
+.date{
+    height: 29px;
+    width: 104px;
+    background: content-box;
+}
+
+.table_str2 div{
+      width: 100%;
+    height: 60px;
+    border-bottom: 3px solid black;
+    display: flex;
+    justify-content: space-around;
+}
+
+.table_str1{
+      display: flex;
+    justify-content: space-around;
+    margin-top: 48px;
+    width: 84%;
+}
+.table_str1 div{
+        font-size: 33px;
+    font-weight: bold;
+    font-family: cursive;
+    color: white;
+    text-shadow: -1px 0px 14px black;
+}
+#accept{
+    width: 146px;
+    height: 33px;
+    border-radius: 13px;
+    font-size: 14px;
+    background: black;
+    color: white;
+}
+.dates{
+    margin-top: 35px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'SF UI Display';
+}
+        
+        #num{
+                font-size: 30px;
+    font-weight: bold;
+   
+   
+    
+
+        }
+        #time{
+               margin-top: 35px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'SF UI Display';
+        }
+        #sum{
+               margin-top: 35px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'SF UI Display';
+        }
+        .podr{
+    width: 64px;
+    font-size: 10px;
+    height: 26px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    text-shadow: -1px -1px 5px white;
+    background: black;
+    margin-top: 30px;
+    padding-right: 59px;
+        }
+        .modal{
+              width: 500px;
+    border: 3px solid;
+    border-radius: 10px;
+    border-color: white;
+    box-shadow: -3px -1px 13px black;
+    margin-top: 328px;
+    
+        }
+        .wrap1{
+                display: flex;
+    justify-content: space-around;
+    padding-top: 12px;
+        }
+        .allname{
+                font-size: 20px;
+    font-family: cursive;
+    font-weight: bold;
+        }
+        .allcost{
+                font-size: 20px;
+    font-family: cursive;
+    font-weight: bold;
+        }
+        .wrap2{
+            display: flex;
+    justify-content: space-around;
+        }
+        #padd{
+            font-size: 16px;
+    font-family: cursive;
+    color: white;
+    text-shadow: 0 0 6px #4a0707;
+        }
+        #costs{
+  font-size: 16px;
+    font-family: cursive;
+    color: white;
+    text-shadow: 0 0 6px #4a0707;
+        }
+        .sum span{
+                font-weight: bold;
+    font-size: 22px;
+    text-shadow: 1px -1px 2px #210c0c;
+        }
+        .table_str3{
+            display: none;
+        }
+        .open{
+                margin-top: -267px;
+    transform: scale(1.5);
+    transition: 0.6s easy;        }
+
+    #btn{
+            margin-left: 100px;
+    border-radius: 7px;
+    background: white;
+    }
+    @media (max-width: 500px) {
+        .table_str1 div {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: cursive;
+    color: white;
+    text-shadow: -1px 0px 14px black;
+}
+    }
+    </style>
+    <div class="container">
+        <div class="string1">
+            <h1>История заказов</h1>
+            <a href="/category">назад</a>
+        </div>
+        <div class="string2">
+<div class="filter">
+    <input min="1" max="3"  class="number" placeholder="номер заказа" type="number" name="" id="">
+     <button id="accept">применить фильтр</button>
+   <input type="date" class="date">
+   
+</div>
+        </div>
+
+        <div class="string3">
+            <div class="table">
+                <div class="table_str1">
+                    <div class="bl1">
+                        №
+                    </div>
+
+                    <div class="bl2">
+                        Дата
+                    </div>
+
+                    <div class="bl3">
+                        Время
+                    </div>
+                    <div class="bl4">
+                        Сумма
+                    </div>
+                </div>
+
+                <div class="table_str2">
+
+                </div>
+<center>
+                <div class="table_str3">
+                        <div class="modal">
+                         <div class="wrap1">
+                            <div class="allname">
+                                название
+                            </div>
+
+                            <div class="allcost">
+                                цена
+                            </div>
+
+
+                         </div>
+
+                         <div class="wrap2">
+                               <div class="names">
+
+                            </div>
+
+                            <div class="costs">
+
+                            </div>
+
+
+                          
+
+                        </div>
+
+                          <div class="sum"></div>
+
+                         </div>
+</center>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+     
+let mass = []
+let massDate = []
+let diws = 0
+        let b = 0
+        let calendar = document.querySelector('.date')
+        let table  = document.querySelector('.table_str2')
+        
+        console.log(table)
+        calendar.addEventListener('change', (e)=>{
+            console.log()
+            select(e.target.value)
+        })
+
+let dts = document.querySelectorAll('dates')
+        function select(a){
+            console.log(a)
+           massDate.forEach(e=>{
+            let sr = e.date.classList
+            
+
+
+
+if(a==e.date.classList){
+    e.date.style.display = ''
+}else{
+     e.date.style.display = 'none'
+
+}
+
+           })
+            
+           
+        }
+
+
+        async function getHistory(){
+            const response = await fetch('/api/order', {
+                method: "GET",
+               headers: { "Accept": "application/json" }
+            })
+            if(response.ok == true){
+                const orders = await response.json()
+                orders.forEach(e=>{
+                    let n  = ++b
+
+                    let divs = document.createElement('div')
+                   divs.id = n
+                  
+                   {{!-- divs.classList.add("era") --}}
+                  mass.push({divs: divs})
+                   
+                   let num = document.createElement('p')
+
+
+
+
+                   num.id = "num"
+                   num.innerHTML = n
+                   table.append(divs)
+                   divs.append(num)
+
+
+                   let date = document.createElement('span')
+                   let dt = e['date']
+                
+                   let ds = new Date(dt)
+                    let year = ds.getFullYear()
+                    let month = ds.getUTCMonth() + 1
+                    let day = ds.getDate()
+                    let gos = ds.getDay()
+                    console.log('day', )
+                    let formatDay = day<10?`0${day}`: `${day}`
+                  {{!-- (day<10? '0': '')+ day --}}
+                 let y =  year
+                 
+                 let live =            `${y}-${month}-${formatDay}`   
+                      date.innerHTML = `${y}-${month}-${formatDay}`
+
+                   date.innerHTML = `${y}-${month}-${formatDay}`
+date.id = live
+date.classList.add('dates')
+massDate.push({"date": divs})
+ divs.classList.add(live)
+                   divs.append(date)
+                    
+
+
+                    let time = document.createElement('p')
+                        
+                    time.innerHTML = `${ds.toTimeString().split(' ')[0]}`
+                      time.id = 'time'
+                        divs.append(time)
+                    let sum = document.createElement('p')
+                        sum.innerHTML = e['sum']
+                        sum.id = 'sum'
+                        divs.append(sum)
+
+
+
+                        let podr = document.createElement('button')
+                        podr.classList.add('podr')
+                        let ys = podr.id = e._id
+                        podr.innerHTML = "подробнее"
+                        divs.append(podr)
+
+                  
+
+                        
+                        
+                })
+                   let podr = document.querySelectorAll('.podr')
+             podr.forEach(e=>{
+  e.addEventListener('click', (e)=>{
+let ids = e.target.id
+
+   podrob(ids,orders) 
+  })
+})
+
+
+
+            }
+        }
+
+let names = document.querySelector('.names')
+let costs = document.querySelector('.costs')
+let table3 = document.querySelector('.table_str3')
+let sums = document.querySelector('.sum')
+function podrob(pr,a){
+   a.forEach(el=>{
+    
+    if(pr == el._id) {
+table.style.display = 'none'
+        table3.style.display = 'block'
+         table3.classList.toggle('open')
+        
+        console.log(el)
+        el['list'].forEach(e=>{
+            let padd = document.createElement('p')
+            padd.innerHTML = e.name
+            padd.id = 'padd'
+            names.append(padd)
+
+            let cost = document.createElement('p')
+            cost.innerHTML = e.cost
+            cost.id = 'costs'
+               costs.append(cost)
+        })
+
+let btn = document.createElement('button')
+btn.innerHTML = 'закрыть'
+btn.id = 'btn'
+        let summa = document.createElement('span')
+        summa.innerHTML =`Общая сумма ${ el.sum}`
+sums.append(summa)
+sums.append(btn)
+
+
+btn.addEventListener('click', ()=>{
+    window.location.reload()
+})
+
+
+
+
+
+    }
+
+   
+   })
+}
+
+let filt = document.querySelector('.number')
+let acceptf =document.getElementById('accept')
+
+
+acceptf.addEventListener('click', ()=>{
+    let sort = filt.value
+    if(sort){
+mass.forEach(e=>{
+    
+    let g = e.divs
+    let s = e.divs.classList
+
+
+    if(sort == g.id){
+        g.style.display = ''
+
+    }else{
+        
+         g.style.display = 'none'
+    }
+    
+})
+    }else{
+       mass.forEach(e=>{
+         let b = e['divs']
+       b.style.display = ''
+       })
+   
+    }
+
+})
+
+        getHistory()
+    </script>
+</body>
+</html>

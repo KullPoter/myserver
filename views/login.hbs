@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .string1{
+            display: flex;
+    justify-content: space-between;
+    background-color: currentcolor;
+
+        }
+        h1{
+            color: white;
+    font-size: 47px;
+    padding-left: 58px;
+    font-family: cursive;
+        }
+        .login-regist{
+            display: none;
+    display: flex;
+    justify-content: space-around;
+    width: 200px;
+    margin-top: 20px;
+    margin-right: 14px;
+    margin-top: 39px;
+        }
+        .login{
+            width: 95px;
+            border-style: solid;
+            border-color: white;
+            height: 50px;
+            border-right-width: 1px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            position: relative;
+        }
+        .regist{
+            width: 95px;
+    border-style: solid;
+    border-color: white;
+    height: 50px;
+    border-left-width: 1px;
+    padding-right: 4px;
+    border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: relative;
+        }
+        .login p{
+          color: white;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    /* padding: 10px; */
+    top: 0px;
+    left: 32px;
+
+        }
+        .regist p{
+            color: white;
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    /* padding: 10px; */
+    top: 0px;
+    left: 2px
+        }
+   .form{
+
+        margin-top: 63px;
+   }
+
+
+    
+        h2{
+            font-size: 39px;
+    font-weight: bold;
+    font-family: cursive;
+        }
+        .email{
+            margin-top: 35px;
+    margin-bottom: 34px;
+    position: relative;
+        }
+            .email input{
+                  border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+    outline: none;
+
+        }
+        .email input::before{
+                border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+        }
+
+        .email input::after{
+                border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+        }
+        .password{
+              margin-top: 35px;
+    margin-bottom: 34px;
+    position: relative;
+        }
+        .password input{
+                        border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+    outline: none;
+        }
+        .submit{
+            width: 159px;
+    height: 37px;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    background-color: black;
+        }
+
+   .form2{
+                display: none;
+
+        margin-top: 63px;
+   }
+
+
+    .email2{
+            margin-top: 35px;
+    margin-bottom: 34px;
+    position: relative;
+        }
+            .email2 input{
+                  border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+    outline: none;
+
+        }
+
+
+
+
+         .password2{
+              margin-top: 35px;
+    margin-bottom: 34px;
+    position: relative;
+        }
+        .password2 input{
+                        border-left: none;
+    width: 275px;
+    height: 27px;
+    border-top: none;
+    border-right: none;
+    outline: none;
+        }
+        .submit2{
+            width: 159px;
+    height: 37px;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    background-color: black;
+        }
+    </style>
+    <div class="container">
+        <div class="string1">
+            <div class="logo">
+                <h1>Newborn</h1>
+            </div>
+            <div class="login-regist">
+                <div class="login">
+                    <p>вход</p>
+                </div>
+                <a class="regist" href="/regist"><p>Регистрайия</p></a>
+            </div>
+        </div>
+
+     
+
+  <center>
+         <div class="string2">
+           <form class="form">
+                <h2>Войти в систему</h2>
+              
+                <div class="email">                <input id="email" type="email" placeholder="email">
+</div>
+                <div class="password">
+                     <input id="password" type="passowrd" placeholder="password">
+                </div>
+                 <input class="submit" type="submit">
+            </form>
+        </div>
+
+
+
+       </center>
+
+
+
+       <h3 class="h3"></h3>
+
+
+    </div>
+    <script>
+        let turn = true
+      
+      const h3 = document.querySelector('.h3')
+ let Temail = document.getElementById('email')
+            let Tpassword = document.getElementById('password')
+
+
+       let submit = document.querySelector('.submit')
+       submit.addEventListener('click', (e)=>{
+        e.preventDefault()
+            let email = document.getElementById('email').value
+            let password = document.getElementById('password').value
+            sendData(email, password)
+       })
+
+ async function sendData(email, passowrd){
+    console.log(email, passowrd)
+  let request = await fetch('api/auth/login', {
+            method: 'POST',
+            headers: { "Accept": "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify({
+                "email": email,
+                "password": passowrd
+            })
+
+        })
+
+         if (request.ok === true) {
+                const user = await request.json();
+                window.location.href = "/category"
+               
+            }else{
+             h3.innerHTML = "Вы ввели неправельные данные!!!!!"
+             h3.style.color = "red"
+             h3.style.fontSize = 33+'px'
+            }
+        
+       }
+
+    
+
+      
+    </script>
+</body>
+</html>

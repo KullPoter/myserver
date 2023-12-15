@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+             font-size: 49px;
+    font-family: cursive;
+    color: #b8afaf;
+    text-shadow: -1px 0px 5px black;
+        }
+        .line1{
+           display: flex;
+    justify-content: space-around;
+    background: #f0ebec;
+    flex-wrap: wrap;
+
+        }
+        .block1{
+                padding-top: 38px;
+    padding-bottom: 38px;
+        }
+        .block2{
+                padding-top: 43px;
+        }
+        .block2 button{
+            width: 263px;
+    font-size: 24px;
+    height: 72px;
+    background-color: #f1eacf;
+    color: #ded377;
+    font-family: cursive;
+    font-weight: bold;
+    border-color: aqua;
+    border-width: 4px;
+    border-radius: 7px;
+        }
+        .newCall{
+                margin-top: 58px;
+    margin-bottom: 38px;
+
+        }
+        .newCall input{
+           
+                width: 222px;
+    height: 48px;
+    font-size: 26px;
+    /* color: red; */
+    font-family: cursive;
+    border-width: 3px;
+    border-radius: 11px;
+        }
+        .send button{
+    width: 140px;
+    height: 32px;
+    color: #505e6a;
+    border-radius: 11px;
+    border-color: whitesmoke;
+    border-width: 2px;
+    font-size: 19px;
+    font-family: cursive;
+        }
+        .sendBlock{
+             display: none;
+        }
+        .totalList{
+               display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+
+        }.totalList button{
+            width: 200px;
+    height: 47px;
+    border-radius: 15px;
+    background-color: #f6f6bc;
+    color: #beb0b0;
+        }
+        h2{
+                font-family: cursive;
+    font-size: 54px;
+    margin-left: 86px;
+    color: #e3b279;
+        }
+        .newPosition{
+                display: flex;
+    flex-direction: column;
+        }
+        .createCategory{
+                    display: flex;
+    flex-wrap: wrap;
+        }
+        .list ul li{
+display: flex;
+    padding-left: 13px;
+    color: #866635;
+    font-family: cursive;
+    font-weight: bold; 
+        font-size: 28px;
+           }
+           .list{
+                margin-left: -160px;
+           }
+
+    .block3 button{
+        width: 100px;
+    height: 42px;
+    background: #ff4141;
+    color: aliceblue;
+    border-radius: 33px;
+    }
+    .block3{
+    margin-top: 80px;
+    }
+    .list ul li p{
+        margin-top: 0px;
+    }
+    .remove{
+          width: 20px;
+    height: 20px;
+    border: 2px solid;
+    border-color: #ff5454;
+    border-radius: 26px;
+    margin-top: 8px;
+    margin-left: 15px;
+    position: relative;
+    
+    
+    }
+
+    .remove img{
+            width: 22px;
+    height: 21px;
+    position: absolute;
+
+left: -1px;   
+ }
+@media (max-width: 412px){
+     .block3 ul li{
+            width: 128px;
+    }
+}
+    
+    </style>
+   <div class="container">
+    <div class="line1">
+        <div class="block1">
+            <h1>{{category.name}}</h1>
+             <div class="id">{{category._id}}</div>
+        </div>
+        <div class="block2">
+            <button>Изменить название</button>
+        </div>
+        <div class="block3">
+            <button class="delete">Удалить</button>
+        </div>
+    </div>
+    <div class="line2">
+       <center>
+        <div class="sendBlock">
+         <div class="newCall">
+            <input type="text" placeholder="новое название">
+        </div>
+        <div class="send">
+            <button>Сохранить</button>
+        </div>
+       </div>
+       </center>
+
+
+       <div class="table2">
+        <div class="head"><h2>Позиции</h2></div>
+     <div class="totalList">
+           <div class="list">
+            {{!-- hbs output --}}
+            
+            <ul>
+                {{#each name}}
+                    <li>{{this.name}}, <p>{{this.cost}}</p> <div id="{{this._id}}" class="remove">
+                        <img src="https://cdn.icon-icons.com/icons2/1150/PNG/512/1486504830-delete-dustbin-empty-recycle-recycling-remove-trash_81361.png" alt="">
+                        </div> </li>
+                
+                {{/each}}
+            
+            </ul>
+
+
+
+            
+        </div>
+        <div class="createCategory">
+            <div class="newPosition">
+                <input type="text" placeholder="название позиции" class="name">
+            <input type="number" placeholder="цена" class="cost">
+            </div>
+             <button>Доюавить позицию</button>
+        </div>
+     </div>
+       </div>
+    </div>
+   </div>
+   <script>
+    let showModel = document.querySelector('.block2 button')
+    let totalBlock = document.querySelector('.sendBlock')
+    let b = 1
+    showModel.addEventListener('click', ()=>{
+        
+        b+=1
+        console.log(b)
+        if(b%2){
+            totalBlock.style.display = "block"
+        }else{
+            totalBlock.style.display = "none"
+        }
+       
+    })
+    let send = document.querySelector('.send button')
+    send.addEventListener('click', ()=>{
+        let id = document.querySelector('.id')
+        let inp = document.querySelector('.newCall input').value
+        changeData(id.innerHTML,inp)
+    })
+    async function changeData(id,a){
+        console.log(a)
+         const response = await fetch("api/category/", {
+                method: "PUT",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    id: id,
+                   name: a
+                })
+            });
+               if (response.ok === true) {
+                const answer = await response.json();
+                window.location.reload()
+          
+            }
+    }
+
+
+
+   {{!-- async function position(id){
+    console.log(id)
+         const response = await fetch("/api/position:/" +id,{
+                method: "GET",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({"id":id})
+             
+            });
+               if (response.ok === true) {
+                const answer = await response.json();
+                console.log(answer)
+                const listS = document.querySelector('.list ul')
+                answer.forEach(e=>{
+
+                     let li = document.createElement('li')
+                    
+                   const iLi =  document.createElement('li')
+                   iLi.append(e.cost)
+                     li.append(e.name)
+                li.append(iLi)
+                  
+                  
+                    listS.append(li)
+                })
+               
+            }
+    } --}}
+
+{{!-- 
+ let id = document.querySelector('.id').innerHTML
+position(id) --}}
+    
+let createCategory = document.querySelector('.createCategory button')
+createCategory.addEventListener('click', ()=>{
+    let name = document.querySelector('.name').value
+    let cost = document.querySelector('.cost').value
+     let id = document.querySelector('.id').innerHTML
+    newPosition(name, cost,id)
+    
+})
+
+const ul= document.querySelector('.list ul')
+async function newPosition(name, cost,id){
+        const response = await fetch("/api/position/position/get",{
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: name,
+                    cost: cost,
+                    category: id
+                })
+            });
+            if (response.ok === true) {
+                const resIn = await response.json();
+                window.location.reload()
+            
+               
+            }
+    }
+let del = document.querySelector('.delete')
+del.addEventListener('click', ()=>{
+ let id = document.querySelector('.id').innerHTML
+ console.log(id)
+ sendDelete(id)
+})
+async function sendDelete(id){
+    console.log(id)
+ const response = await fetch("/api/position/get/" + id, {
+                method: "DELETE",
+         headers: { "Accept": "application/json", "Content-Type": "application/json" },
+         body: JSON.stringify({"id": id})
+            });
+            if (response.ok === true) {
+                const answer = await response.json();
+                window.location.href = '/category'
+            
+            }
+}
+
+let removePos = document.querySelectorAll('.remove')
+removePos.forEach(e=>{
+    e.addEventListener('click', ()=>{
+  let idP = e.id
+   console.log(idP)
+   removePosition(idP)
+    })
+})
+async function removePosition(id){
+    console.log(id)
+    const response = await fetch('/api/position/position/' +id, {
+           method: "DELETE",
+           headers: { "Accept": "application/json" }
+    })
+      if (response.ok === true) {
+                const rb = await response.json();
+                window.location.reload()
+            
+            }
+}
+
+
+
+
+
+   </script>
+</body>
+</html>
